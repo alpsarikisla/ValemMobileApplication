@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -48,6 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.cover,
           height: 32,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.account_circle),
+            color: Colors.white,
+          )
+        ],
       ),
       body: Center(
         child: Column(
