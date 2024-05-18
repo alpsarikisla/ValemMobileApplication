@@ -22,28 +22,33 @@ class RegisterPage extends StatelessWidget {
 }
 
 Widget content(BuildContext context) {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _mailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
       TextEditingController();
   return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(
+              height: 30,
+              width: double.infinity,
+            ),
             TextFormField(
-              controller: _nameController,
+              controller: nameController,
               decoration: InputDecoration(
                 labelText: 'Otopark Adı',
+                labelStyle: const TextStyle(color: Colors.black),
                 prefixIcon: const Icon(Icons.storefront),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -53,16 +58,17 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             TextFormField(
-              controller: _phoneController,
+              controller: phoneController,
               decoration: InputDecoration(
                 labelText: 'Gsm Numarası',
+                labelStyle: const TextStyle(color: Colors.black),
                 prefixIcon: const Icon(Icons.phone_android),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -72,16 +78,17 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             TextFormField(
-              controller: _mailController,
+              controller: mailController,
               decoration: InputDecoration(
                 labelText: 'Mail Adresi',
+                labelStyle: const TextStyle(color: Colors.black),
                 prefixIcon: const Icon(Icons.mail),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -91,16 +98,17 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             TextFormField(
-              controller: _passwordController,
+              controller: passwordController,
               decoration: InputDecoration(
                 labelText: 'Şifre',
+                labelStyle: const TextStyle(color: Colors.black),
                 prefixIcon: const Icon(Icons.lock_open),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -110,16 +118,17 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             TextFormField(
-              controller: _confirmPasswordController,
+              controller: confirmPasswordController,
               decoration: InputDecoration(
                 labelText: 'Şifre Tekrar',
+                labelStyle: const TextStyle(color: Colors.black),
                 prefixIcon: const Icon(Icons.lock),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
