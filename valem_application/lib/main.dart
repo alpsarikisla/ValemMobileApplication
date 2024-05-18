@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valem_application/pages/account_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(
+        title: "Valem",
+      ),
+      routes: <String, WidgetBuilder>{
+        '/accountPage': (context) => const AccountPage(title: 'Hesabım'),
+      },
     );
   }
 }
@@ -51,7 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(_createAccountRoute());
+            },
             icon: const Icon(Icons.account_circle),
             color: Colors.white,
           )
@@ -78,4 +86,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Route _createAccountRoute() {
+  return PageRouteBuilder(
+    transitionDuration: const Duration(milliseconds: 500),
+    pageBuilder: (context, animation, secondaryAnimation) => const AccountPage(
+      title: 'Hesabım',
+    ),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
