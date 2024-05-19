@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:valem_application/pages/login_page.dart';
 import 'package:valem_application/services/firabase_service.dart';
 import 'package:valem_application/services/models/otopark.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -46,6 +47,10 @@ Widget content(BuildContext context) {
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.green,
       );
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const LoginPage(
+                title: "Otopark Giriş",
+              )));
     } catch (e) {
       Fluttertoast.showToast(
         msg: '     Otopark Eklenirken Hata Oluştu     ',
