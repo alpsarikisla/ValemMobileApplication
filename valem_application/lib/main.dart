@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:valem_application/firebase_options.dart';
 import 'package:valem_application/pages/account_page.dart';
 
 void main() {
@@ -10,8 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Valem Otopark Takip Sistemi',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

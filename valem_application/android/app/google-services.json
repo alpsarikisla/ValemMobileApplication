@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "141123285983",
+    "project_id": "valemdb-62116",
+    "storage_bucket": "valemdb-62116.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141123285983:android:ce11fef2dbbf42fe280a6a",
+        "android_client_info": {
+          "package_name": "com.example.valem_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-y7w-7N3L0DxGPXAACiZtpZVGi9KhVtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
