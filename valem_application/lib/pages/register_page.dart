@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:valem_application/services/firabase_service.dart';
+import 'package:valem_application/services/models/otopark.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key, required this.title});
@@ -28,6 +32,31 @@ Widget content(BuildContext context) {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  addcarpark() {
+    try {
+      FirebaseService().register(Otopark(
+          name: nameController.text,
+          phone: phoneController.text,
+          email: mailController.text,
+          password: passwordController.text,
+          creationtime: Timestamp.now()));
+      Fluttertoast.showToast(
+        msg: '       Otopark Kaydı Tamamlandı       ',
+        timeInSecForIosWeb: 3,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+      );
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: '     Otopark Eklenirken Hata Oluştu     ',
+        timeInSecForIosWeb: 3,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+      );
+    }
+    FocusScope.of(context).unfocus();
+  }
+
   return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
@@ -112,6 +141,9 @@ Widget content(BuildContext context) {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
             ),
             const SizedBox(
               height: 20,
@@ -132,13 +164,16 @@ Widget content(BuildContext context) {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
             ),
             const SizedBox(
               height: 20,
               width: double.infinity,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: addcarpark,
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.orange),
                   minimumSize: MaterialStateProperty.all(const Size(300, 50)),

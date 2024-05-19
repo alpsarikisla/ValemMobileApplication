@@ -1,12 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:valem_application/services/models/otopark.dart';
+import 'package:uuid/uuid.dart';
 
 class FirebaseService {
-  final araclarCol = FirebaseFirestore.instance.collection("araclar");
+  final carparks = FirebaseFirestore.instance.collection("CarParks");
 
-  Register(Arac arac) {
+  register(Otopark otopark) {
     var uuid = const Uuid().v1();
-    araclarCol
-        .doc(uuid)
-        .set({'id': uuid, 'plaka': arac.plaka, 'tarih': arac.tarih});
+    carparks.doc(uuid).set({
+      'id': uuid,
+      'name': otopark.name,
+      'phone': otopark.phone,
+      'email': otopark.email,
+      'password': otopark.password,
+      'creationtime': otopark.creationtime
+    });
   }
 }

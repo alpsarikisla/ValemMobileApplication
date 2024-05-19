@@ -16,6 +16,8 @@ dependencies:
   hexcolor: ^3.0.1
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
+  uuid: ^4.4.0
+  fluttertoast: ^8.2.5
 
 dev_dependencies:
   flutter_test:

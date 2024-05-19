@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:valem_application/pages/login_page.dart';
 import 'package:valem_application/pages/register_page.dart';
 
 class AccountPage extends StatelessWidget {
@@ -53,7 +54,12 @@ Widget content(BuildContext context) {
         height: 80,
       ),
       ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const LoginPage(
+                    title: "Otopark Giriş",
+                  )));
+        },
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.orange),
             minimumSize: MaterialStateProperty.all(const Size(300, 50)),
