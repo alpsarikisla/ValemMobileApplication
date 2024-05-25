@@ -79,19 +79,6 @@ Widget content(BuildContext context) {
       const SizedBox(
         height: 20,
       ),
-      // ElevatedButton(
-      //   onPressed: () {},
-      //   style: ElevatedButton.styleFrom(
-      //     backgroundColor: Colors.grey,
-      //     minimumSize: const Size(300, 50),
-      //   ),
-      //   child: const Text(
-      //     "Otopark Kaydı Oluştur",
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      // )
       ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(

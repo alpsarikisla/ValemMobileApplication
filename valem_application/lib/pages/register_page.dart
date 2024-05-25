@@ -5,6 +5,8 @@ import 'package:valem_application/services/firabase_service.dart';
 import 'package:valem_application/services/models/otopark.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+final _formkey = GlobalKey<FormState>();
+
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key, required this.title});
   final String title;
@@ -21,7 +23,7 @@ class RegisterPage extends StatelessWidget {
         elevation: 1,
         shadowColor: Colors.black,
       ),
-      body: content(context),
+      body: Form(key: _formkey, child: content(context)),
     );
   }
 }
@@ -86,6 +88,11 @@ Widget content(BuildContext context) {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              validator: (value) => value!.length < 3
+                  ? 'Otopark adı en az 3 karakter olmalıdır'
+                  : null,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              //https://www.youtube.com/watch?v=nCgGGfSZ7zY
             ),
             const SizedBox(
               height: 20,
