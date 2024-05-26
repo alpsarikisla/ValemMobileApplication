@@ -32,27 +32,25 @@ Widget content(BuildContext context) {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   addcarpark() {
-    try {
-      AuthService().signup(
-          name: nameController.text,
-          phone: phoneController.text,
-          email: mailController.text,
-          password: passwordController.text,
-          creationtime: Timestamp.now());
-      Fluttertoast.showToast(
-        msg: '       Otopark Kaydı Tamamlandı       ',
-        timeInSecForIosWeb: 3,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
-      );
-    } catch (e) {
-      Fluttertoast.showToast(
-        msg: '     Otopark Eklenirken Hata Oluştu     ',
-        timeInSecForIosWeb: 3,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-      );
-    }
+    AuthService()
+        .signup(
+            name: nameController.text,
+            phone: phoneController.text,
+            email: mailController.text,
+            password: passwordController.text,
+            creationtime: Timestamp.now())
+        .then((value) => {
+              if (value == true)
+                {
+                  Fluttertoast.showToast(
+                      msg: 'Otopark Kaydı Tamamlandı',
+                      timeInSecForIosWeb: 3,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.green,
+                      toastLength: Toast.LENGTH_LONG)
+                }
+            });
+
     FocusScope.of(context).unfocus();
   }
 

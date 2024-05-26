@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(
-        title: "Valem",
-      ),
+      home: const MyHomePage(),
       routes: <String, WidgetBuilder>{
         '/accountPage': (context) => const AccountPage(title: 'Hesabım'),
       },
@@ -31,9 +29,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

@@ -1,5 +1,7 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:valem_application/main.dart';
+import 'package:valem_application/services/auth_service.dart';
 //import 'package:valem_application/services/firabase_service.dart';
 //import 'package:valem_application/services/models/otopark.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
@@ -26,8 +28,29 @@ class LoginPage extends StatelessWidget {
 }
 
 Widget content(BuildContext context) {
-  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController mailcontroller = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  login() {
+    AuthService()
+        .signIn(
+          context,
+          email: mailcontroller.text,
+          password: passwordController.text,
+        )
+        .then((value) => {
+              if (value == true)
+                {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const MyHomePage(),
+                    ),
+                    (Route route) => false,
+                  )
+                }
+            });
+
+    FocusScope.of(context).unfocus();
+  }
 
   return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -39,11 +62,11 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             TextFormField(
-              controller: phoneController,
+              controller: mailcontroller,
               decoration: InputDecoration(
-                labelText: 'Gsm Numarası',
+                labelText: 'Mail Adresi',
                 labelStyle: const TextStyle(color: Colors.black),
-                prefixIcon: const Icon(Icons.phone_android),
+                prefixIcon: const Icon(Icons.mail),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
@@ -82,7 +105,7 @@ Widget content(BuildContext context) {
               width: double.infinity,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: login,
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.orange),
                   minimumSize: MaterialStateProperty.all(const Size(300, 50)),
