@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:valem_application/services/firabase_service.dart';
-import 'package:valem_application/services/models/otopark.dart';
+import 'package:valem_application/services/auth_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -34,12 +33,12 @@ Widget content(BuildContext context) {
       TextEditingController();
   addcarpark() {
     try {
-      FirebaseService().register(Otopark(
+      AuthService().signup(
           name: nameController.text,
           phone: phoneController.text,
           email: mailController.text,
           password: passwordController.text,
-          creationtime: Timestamp.now()));
+          creationtime: Timestamp.now());
       Fluttertoast.showToast(
         msg: '       Otopark Kaydı Tamamlandı       ',
         timeInSecForIosWeb: 3,
