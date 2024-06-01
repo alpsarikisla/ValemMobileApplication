@@ -76,4 +76,9 @@ class AuthService {
       'creationtime': creationtime
     });
   }
+
+  String getUser() {
+    final User user = FirebaseAuth.instance.currentUser!;
+    return user.email!;
+  }
 }
