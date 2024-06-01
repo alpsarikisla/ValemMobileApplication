@@ -16,8 +16,10 @@ class AuthService {
     try {
       final UserCredential usercredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
+
       if (usercredential.user != null) {
         _registerUser(
+            userid: usercredential.user!.uid,
             name: name,
             phone: phone,
             email: email,
@@ -63,12 +65,14 @@ class AuthService {
   }
 
   Future<void> _registerUser(
-      {required String name,
+      {required String userid,
+      required String name,
       required String phone,
       required String email,
       required String password,
       required Timestamp creationtime}) async {
-    await userCollection.doc().set({
+    await userCollection.doc(userid).set({
+      'userid': userid,
       'name': name,
       'phone': phone,
       'email': email,

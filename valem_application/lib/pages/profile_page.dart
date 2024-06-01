@@ -37,7 +37,7 @@ Widget content(BuildContext context) {
             borderRadius: BorderRadius.only(bottomRight: Radius.circular(50))),
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.only(top: 60.0, left: 20),
+          padding: const EdgeInsets.only(top: 30, left: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -45,8 +45,12 @@ Widget content(BuildContext context) {
                 "Merhaba",
                 style: TextStyle(color: Colors.white, fontSize: 40),
               ),
+              const Text(
+                "Otopark Tanımlaması Yapılmadı",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
               Text(
-                mail,
+                "Kullanıcı = $mail",
                 style: const TextStyle(color: Colors.white, fontSize: 17),
               ),
             ],

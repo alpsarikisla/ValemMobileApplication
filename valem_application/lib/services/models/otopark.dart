@@ -17,7 +17,7 @@ class Otopark {
 
   factory Otopark.fromJson(Map<String, dynamic> json) {
     return Otopark(
-        id: json['id'],
+        id: json['userid'],
         name: json['name'],
         phone: json['phone'],
         email: json['email'],

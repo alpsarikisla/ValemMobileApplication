@@ -1,11 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:valem_application/pages/profile_page.dart';
-import 'package:valem_application/services/auth_service.dart';
+import 'package:valem_application/services/firabase_service.dart';
+import 'package:valem_application/services/models/otopark.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key, required this.title});
   final String title;
+
   @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  User user = FirebaseAuth.instance.currentUser!;
+  Otopark? otopark;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseService().getOtopark(user.uid).then((data) {
+      otopark = data;
+      setState(() {});
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -25,22 +44,18 @@ class WelcomePage extends StatelessWidget {
           )
         ],
       ),
-      body: content(context),
+      body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Text("Hello, ${user.email}"),
+                Text(otopark!.name),
+              ],
+            ),
+          )),
     );
   }
-}
-
-Widget content(BuildContext context) {
-  String mail = AuthService().getUser();
-  return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Text("Hello, $mail"),
-          ],
-        ),
-      ));
 }
 
 Route _createAccountRoute() {
