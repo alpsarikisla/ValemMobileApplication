@@ -19,6 +19,7 @@ dependencies:
   uuid: ^4.4.0
   fluttertoast: ^8.2.5
   firebase_auth: ^4.17.8
+  date_picker_plus: ^4.0.0
 
 dev_dependencies:
   flutter_test:

@@ -3,8 +3,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:valem_application/pages/login_page.dart';
 import 'package:valem_application/pages/register_page.dart';
 
-class AccountPage extends StatelessWidget {
-  const AccountPage({super.key, required this.title});
+class AuthPage extends StatelessWidget {
+  const AuthPage({super.key, required this.title});
   final String title;
 
   @override

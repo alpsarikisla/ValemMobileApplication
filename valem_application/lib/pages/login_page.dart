@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valem_application/main.dart';
+import 'package:valem_application/pages/widget_tree.dart';
 import 'package:valem_application/services/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
@@ -38,7 +38,7 @@ Widget content(BuildContext context) {
                 {
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
-                      builder: (BuildContext context) => const MyHomePage(),
+                      builder: (BuildContext context) => const WidgetTree(),
                     ),
                     (Route route) => false,
                   )

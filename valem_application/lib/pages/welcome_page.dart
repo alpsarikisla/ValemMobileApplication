@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valem_application/pages/profile_page.dart';
 import 'package:valem_application/services/auth_service.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class WelcomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              //Navigator.of(context).push(_createAccountRoute());
+              Navigator.of(context).push(_createAccountRoute());
             },
             icon: const Icon(Icons.account_circle),
             color: Colors.white,
@@ -31,15 +32,34 @@ class WelcomePage extends StatelessWidget {
 
 Widget content(BuildContext context) {
   String mail = AuthService().getUser();
-  int count = 5;
   return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Text("Hello, $mail"),
-            Text("Deneme $count"),
           ],
         ),
       ));
+}
+
+Route _createAccountRoute() {
+  return PageRouteBuilder(
+    transitionDuration: const Duration(milliseconds: 500),
+    pageBuilder: (context, animation, secondaryAnimation) => const ProfilePage(
+      title: 'Hesabım',
+    ),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

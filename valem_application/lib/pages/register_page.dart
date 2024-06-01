@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:valem_application/services/auth_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:date_picker_plus/date_picker_plus.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key, required this.title});
@@ -168,6 +169,17 @@ Widget content(BuildContext context) {
             const SizedBox(
               height: 20,
               width: double.infinity,
+            ),
+            SizedBox(
+              width: 300,
+              height: 400,
+              child: DatePicker(
+                minDate: DateTime(2021, 1, 1),
+                maxDate: DateTime(2023, 12, 31),
+                onDateSelected: (value) {
+                  // Handle selected date
+                },
+              ),
             ),
             ElevatedButton(
               onPressed: addcarpark,

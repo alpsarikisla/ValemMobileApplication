@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:valem_application/firebase_options.dart';
-import 'package:valem_application/pages/account_page.dart';
+import 'package:valem_application/pages/auth_page.dart';
 import 'package:valem_application/pages/widget_tree.dart';
 
 Future<void> main() async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const WidgetTree(),
       routes: <String, WidgetBuilder>{
-        '/accountPage': (context) => const AccountPage(title: 'Hesabım'),
+        '/accountPage': (context) => const AuthPage(title: 'Hesabım'),
       },
     );
   }
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 Route _createAccountRoute() {
   return PageRouteBuilder(
     transitionDuration: const Duration(milliseconds: 500),
-    pageBuilder: (context, animation, secondaryAnimation) => const AccountPage(
+    pageBuilder: (context, animation, secondaryAnimation) => const AuthPage(
       title: 'Hesabım',
     ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
