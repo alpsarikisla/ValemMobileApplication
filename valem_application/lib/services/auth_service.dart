@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthService {
   final userCollection = FirebaseFirestore.instance.collection("CarParks");
+  final priceCollection = FirebaseFirestore.instance.collection("Prices");
   final firebaseAuth = FirebaseAuth.instance;
 
   Future<bool> signup(
@@ -25,6 +26,8 @@ class AuthService {
             email: email,
             password: password,
             creationtime: creationtime);
+        _registerPrice(
+            userid: usercredential.user!.uid, entranceprice: 0, hourlyprice: 0);
       }
       return true;
     } on FirebaseAuthException catch (e) {
@@ -78,6 +81,18 @@ class AuthService {
       'email': email,
       'password': password,
       'creationtime': creationtime
+    });
+  }
+
+  Future<void> _registerPrice({
+    required String userid,
+    required num entranceprice,
+    required num hourlyprice,
+  }) async {
+    await priceCollection.doc(userid).set({
+      'userid': userid,
+      'entranceprice': entranceprice,
+      'hourlyprice': hourlyprice,
     });
   }
 

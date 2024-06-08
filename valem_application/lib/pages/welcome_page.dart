@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:valem_application/pages/profile_page.dart';
-import 'package:valem_application/services/firabase_service.dart';
-import 'package:valem_application/services/models/otopark.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key, required this.title});
@@ -14,16 +12,6 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   User user = FirebaseAuth.instance.currentUser!;
-  Otopark? otopark;
-
-  @override
-  void initState() {
-    super.initState();
-    FirebaseService().getOtopark(user.uid).then((data) {
-      otopark = data;
-      setState(() {});
-    });
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +38,6 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Column(
               children: <Widget>[
                 Text("Hello, ${user.email}"),
-                Text(otopark!.name),
               ],
             ),
           )),
