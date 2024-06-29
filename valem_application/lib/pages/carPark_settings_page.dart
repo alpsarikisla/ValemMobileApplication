@@ -40,6 +40,7 @@ class _CarparkSettingsState extends State<CarparkSettings> {
         TextEditingController(text: entranceValue);
     final TextEditingController hourlypricecontroller =
         TextEditingController(text: hourlyValue);
+
     updatePrice() {
       FirebaseService()
           .updatePrice(user.uid, num.parse(entrancepricecontroller.text),
@@ -126,6 +127,25 @@ class _CarparkSettingsState extends State<CarparkSettings> {
                   ),
                   const Row(
                     children: <Widget>[Text("Saatlik Ücret"), Spacer()],
+                  ),
+                  TextFormField(
+                    controller: hourlypricecontroller,
+                    decoration: InputDecoration(
+                      labelText: '0',
+                      labelStyle: const TextStyle(color: Colors.black),
+                      prefixIcon: const Icon(Icons.price_check),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.orange),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   TextFormField(
                     controller: hourlypricecontroller,

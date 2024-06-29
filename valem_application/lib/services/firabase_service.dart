@@ -16,7 +16,8 @@ class FirebaseService {
       'phone': otopark.phone,
       'email': otopark.email,
       'password': otopark.password,
-      'creationtime': otopark.creationtime
+      'creationtime': otopark.creationtime,
+      'capacity': otopark.capacity
     });
   }
 

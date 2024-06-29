@@ -7,13 +7,15 @@ class Otopark {
   final String email;
   final String password;
   final Timestamp creationtime;
+  final num capacity;
   Otopark(
       {this.id = "",
       required this.name,
       required this.phone,
       required this.email,
       required this.password,
-      required this.creationtime});
+      required this.creationtime,
+      required this.capacity});
 
   factory Otopark.fromJson(Map<String, dynamic> json) {
     return Otopark(
@@ -22,6 +24,7 @@ class Otopark {
         phone: json['phone'],
         email: json['email'],
         password: json['password'],
-        creationtime: json['creationtime']);
+        creationtime: json['creationtime'],
+        capacity: json['capacity']);
   }
 }
