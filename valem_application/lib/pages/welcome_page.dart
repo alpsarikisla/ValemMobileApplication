@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:valem_application/pages/addcar_page.dart';
+import 'package:valem_application/pages/carlist_page.dart';
 import 'package:valem_application/pages/profile_page.dart';
 import 'package:valem_application/services/firabase_service.dart';
 import 'package:valem_application/services/models/otopark.dart';
@@ -91,7 +93,12 @@ class _WelcomePageState extends State<WelcomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const CreatePage(
+                            title: "Araç Giriş",
+                          )));
+                },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green),
                     minimumSize:
@@ -111,7 +118,12 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ListPage(
+                            title: "Araç Listesi",
+                          )));
+                },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                     minimumSize:
